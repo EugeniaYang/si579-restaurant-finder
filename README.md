@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# Getting Started with our Restaurant Finder
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## About UI Library: ant-design
+
+- `yarn add antd` to install ant-design if you are running on localhost
+- Open https://ant.design/components/overview-cn/ to view use in Chinese
 
 ## Available Scripts
 
