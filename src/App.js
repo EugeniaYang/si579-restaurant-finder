@@ -4,11 +4,12 @@ import SearchBar from "./components/SearchBar";
 import {Row, Col, Layout} from 'antd';
 import ResultListing from "./components/ResultListing";
 import React from "react";
+import SimpleMap from "./components/Map";
+
 
 const { Header, Footer, Sider, Content } = Layout;
 function App() {
     const style='';
-
 
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
             <Col xs={20} sm={18} md={18} lg={16} xl={14}>
                 <h1>Find the restaurant for you!</h1>
                 <SearchBar />
+                <SimpleMap />
                 <h1/>
                 <div/>
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
