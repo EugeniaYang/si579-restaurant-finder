@@ -58,7 +58,7 @@ const Complete = () => {
                     >
                     <Input.Search size="large" placeholder="input here" enterButton/>
                 </AutoComplete>
-                <p>Sometimes the autofill does not work because we are using a proxy. You can try again later.</p>
+                <p>Sometimes the autofill does not work because we are using a proxy. Please try again later.</p>
             </>
         );
     }
