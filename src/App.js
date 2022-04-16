@@ -5,7 +5,8 @@ import {Row, Col, Layout} from 'antd';
 import ResultListing from "./components/ResultListing";
 import React from "react";
 import SimpleMap from "./components/Map";
-
+import { Wrapper, Status, Map, Marker } from "@googlemaps/react-wrapper";
+import Complete from "./components/AutoComplete";
 
 const { Header, Footer, Sider, Content } = Layout;
 function App() {
@@ -19,6 +20,8 @@ function App() {
             <Col xs={20} sm={18} md={18} lg={16} xl={14}>
                 <h1>Find the restaurant for you!</h1>
                 <SearchBar />
+                <Complete/>
+
                 <SimpleMap />
                 <h1/>
                 <div/>
