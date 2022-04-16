@@ -5,11 +5,14 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@googlemaps/react-wrapper": "^1.1.31",
+    "@react-google-maps/api": "^2.8.1",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.19.5",
     "axios": "^0.24.0",
+    "expo-location": "^14.0.2",
+    "expo-status-bar": "^1.2.0",
     "express": "^4.17.3",
     "google-map-react": "^2.1.10",
     "react": "^17.0.0",
@@ -17,6 +20,7 @@
     "react-google-autocomplete": "^2.6.1",
     "react-google-maps": "^9.4.5",
     "react-google-places-autocomplete": "^3.3.4",
+    "react-native": "^0.68.1",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4"
   },
@@ -45,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "expo-permissions": "^13.1.1",
     "react-infinite-scroll-component": "^6.1.0"
   }
 }
