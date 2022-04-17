@@ -16,25 +16,26 @@ function mockVal(str) {
         });
 }
 
-const Complete = () => {
+const Complete = (props) => {
         const [value, setValue] = useState('');
         const [options, setOptions] = useState([]);
-        const [results, setResults] = useState([])
+        const [selected, setSelected] = useState([])
 
         async function onSearch(searchText) {
             const r = await mockVal(searchText);
-            const results = r.map((x) => ({value: x.description}));
+            const results = r.map((x) => ({value: x.description, key:x.place_id}));
             setOptions(
                 !searchText ? [] : results,
             );
         }
 
-        const onSelect = (data) => {
-            this.props.setCenterPos(data)
-            console.log('onSelect', data);
+        const onSelect = (val, option) => {
+            props.setCenterPos(option)
+            console.log('onSelect', val, option);
         };
 
         const onChange = (data) => {
+            // console.log('onChange', {value});
             setValue(data);
         };
 
@@ -47,7 +48,7 @@ const Complete = () => {
                     style={{
                         width: '100%',
                     }}
-                    onSelect={onSelect}
+                    onSelect={(val, option) => onSelect(val, option)}
                     onSearch={onSearch}
                     onChange={onChange}
                 >

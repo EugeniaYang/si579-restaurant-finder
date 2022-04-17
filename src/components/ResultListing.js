@@ -36,12 +36,12 @@ function ResultListing() {
             .catch(e => console.log(e))
     }
 
-    const loadMoreData = () => {
+    async function loadMoreData (){
         if (loading) {
             return;
         }
         setLoading(true);
-        handleRestaurantSearch()
+        await handleRestaurantSearch()
         setLoading(false)
         // fetch('https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo')
         //     .then(res => res.json())
@@ -52,11 +52,11 @@ function ResultListing() {
         //     .catch(() => {
         //         setLoading(false);
         //     });
-    };
+    }
 
-    useEffect(() => {
-        loadMoreData();
-    }, []);
+    // useEffect(() => {
+    //     loadMoreData().then(r => );
+    // }, []);
 
     return (
         <div className="ResultListing">

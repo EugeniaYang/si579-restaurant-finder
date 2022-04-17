@@ -1,80 +1,57 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-import { Marker } from '@react-google-maps/api';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
-const API_KEY='AIzaSyCPuTBdJFz2V9k_7QtyU6niWQg-irn84jk';
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-const containerStyle = {
-    width: '100%',
-    height: '400px'
-};
+import React, {useEffect, useState} from 'react';
+import {GoogleMap, Marker} from '@react-google-maps/api';
 
-const center = {//north quad
-    lat: 42.280661373579385,
-    lng: -83.74013801578548
-};
+const API_KEY = 'AIzaSyCPuTBdJFz2V9k_7QtyU6niWQg-irn84jk';
 
-const mapContainerStyle = {
-    height: "400px",
-    width: "800px"
+const findPos = (id) => {
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    return fetch(proxyUrl + 'https://maps.googleapis.com/maps/api/place/details/json?' +
+        'place_id=' + id + '&fields=geometry' +
+        '&key=' + API_KEY, {mode: 'cors', headers: {'Access-Control-Allow-Origin': "*"}})
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data.result.geometry.location)
+            return data.result.geometry.location;
+        }).catch((err) => {
+            console.log(err);
+        });
+
 }
-
-const marker_position = {
-    lat: 42.280661373579385,
-    lng: -83.74013801578548
-}
-
-const onLoad = marker => {
-    // console.log(this.props.centerPos)
-    console.log('marker: ', marker)
-}
-
-class SimpleMap extends Component {
-    static defaultProps = {
-        center: {
-            lat: 59.95,
-            lng: 30.33
-        },
-        zoom: 11,
-        centerPos: []
+const SimpleMap = (props) => {
+    const containerStyle = {
+        width: '100%',
+        height: '400px'
     };
+    const [markers,setMarkers]=useState([])
+    const centerLoc=findPos(props.centerPos.key);
+    const showMarkers=()=>{
+        let result=[<Marker position={centerLoc}/>];
+        if (markers.len>0){
 
-    render() {
-        return (
-            // Important! Always set the container height explicitly
-            <div style={{ height: '600px', width: '100%' }}>
-                {/*<GoogleMapReact*/}
-                {/*    bootstrapURLKeys={{ key:API_KEY}}*/}
-                {/*    defaultCenter={this.props.center}*/}
-                {/*    defaultZoom={this.props.zoom}*/}
-                {/*>*/}
-                {/*    <AnyReactComponent*/}
-                {/*        lat={59.955413}*/}
-                {/*        lng={30.337844}*/}
-                {/*        text="My Marker"*/}
-                {/*    />*/}
-                {/*</GoogleMapReact>*/}
-
-
-                {/*<LoadScript*/}
-                {/*    googleMapsApiKey={API_KEY}*/}
-                {/*>*/}
-                    <GoogleMap
-                        mapContainerStyle={containerStyle}
-                        center={center}
-                        zoom={10}
-                    >
-                        { /* Child components, such as markers, info windows, etc. */ }
-                        <Marker
-                            onLoad={onLoad}
-                            position={marker_position}
-                        />
-                    </GoogleMap>
-
-                {/*</LoadScript>*/}
-            </div>
-        );
+        }
+        return result;
     }
+
+    async function onLoad(marker) {
+        console.log(props.centerPos)
+        let a = await findPos(props.centerPos.key)
+        console.log('marker: ', marker)
+    }
+
+    return (
+        // Important! Always set the container height explicitly
+        <div style={{height: '600px', width: '100%'}}>
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={findPos(props.centerPos.key)}
+                zoom={10}
+            >
+                {showMarkers}
+            </GoogleMap>
+
+        </div>
+    );
+
 }
 
 export default SimpleMap;

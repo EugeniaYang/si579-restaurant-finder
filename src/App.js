@@ -10,7 +10,7 @@ import GoogleSearch from "./components/GoogleSearch";
 
 
 function App() {
-    const[centerPos, setCenterPos] = useState('x');
+    const[centerPos, setCenterPos] = useState({value: 'North Quadrangle Residential and Academic Complex, South State Street, Ann Arbor, MI, USA', key:"ChIJy_fxa0CuPIgRWmk6N0CQ0u8"});
 
     return (
         <div className="App">
@@ -20,6 +20,7 @@ function App() {
                 <Col xs={20} sm={18} md={18} lg={16} xl={14}>
                     <h1>Find the restaurant for you!</h1>
                     <Complete setCenterPos={setCenterPos}/>
+                    <h2>Current Center:{centerPos.value}</h2>
                     <SimpleMap centerPos={centerPos}/>
                     <GoogleSearch centerPos={centerPos}/>
                     <h1/>
