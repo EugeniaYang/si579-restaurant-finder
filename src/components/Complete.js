@@ -35,7 +35,6 @@ const Complete = (props) => {
         };
 
         const onChange = (data) => {
-            // console.log('onChange', {value});
             setValue(data);
         };
 
@@ -54,9 +53,10 @@ const Complete = (props) => {
                 >
                     <Input.Search size="large" placeholder="input here" enterButton/>
                 </AutoComplete>
-                You need to enable the function at the first time.<a href={'https://cors-anywhere.herokuapp.com/corsdemo'}>Click
-                here</a>
+                <p>You need to enable the function at the first time.<a href={'https://cors-anywhere.herokuapp.com/corsdemo'}>Click
+                    here</a></p>
                 <p>Sometimes the autofill does not work because we are using a proxy. Please try again later.</p>
+                <br/>
             </>
         );
     }

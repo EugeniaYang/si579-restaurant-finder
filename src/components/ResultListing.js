@@ -1,25 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import {List, message, Avatar, Skeleton, Divider} from 'antd';
+import {List, message, Avatar, Skeleton, Divider, Button} from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-
 // const API_KEY = 'AIzaSyCPuTBdJFz2V9k_7QtyU6niWQg-irn84jk';
-const API_KEY='AIzaSyBjBsffMVnkwVe7AfZmca47IU5XLA3OQfE';
-function ResultListing() {
+const API_KEY = 'AIzaSyBjBsffMVnkwVe7AfZmca47IU5XLA3OQfE';
 
+function ResultListing(props) {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
-    const [restaurantList, setRestaurantList] = useState([])
-    const center = {//north quad
-        lat: 42.280661373579385,
-        lng: -83.74013801578548
-    };
+    const [finish, setFinish] = useState(false);
 
-    const handleRestaurantSearch = () => {
-        console.log("here")
+    async function handleRestaurantSearch () {
+        console.log("here", props.centerLoc)
+        setFinish(false)
         const proxyUrl = "https://cors-anywhere.herokuapp.com/";
         const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
-        const location = `location=${center.lat},${center.lng}`;
+        const location = '&location='+ props.centerLoc.lat+','+props.centerLoc.lng;
         const radius = '&radius=2000';
         const type = '&keyword=restaurant';
         const key = '&key=' + API_KEY;
@@ -27,70 +23,60 @@ function ResultListing() {
         fetch(proxyUrl + restaurantSearchUrl)
             .then(response => response.json())
             .then(body => {
-                setData([...data, ...body.results]);
-            })
-            .then(result => {
-                console.log(result)
-                setRestaurantList(result)
+                console.log(restaurantSearchUrl)
+                console.log(body.results)
+                setData(body.results);
+                setFinish(true);
             })
             .catch(e => console.log(e))
     }
 
-    async function loadMoreData (){
+    async function loadMoreData() {
         if (loading) {
             return;
         }
         setLoading(true);
+
         await handleRestaurantSearch()
+        setFinish(true)
+        console.log(data.results)
         setLoading(false)
-        // fetch('https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo')
-        //     .then(res => res.json())
-        //     .then(body => {
-        //         setData([...data, ...body.results]);
-        //         setLoading(false);
-        //     })
-        //     .catch(() => {
-        //         setLoading(false);
-        //     });
     }
 
-    // useEffect(() => {
-    //     loadMoreData().then(r => );
-    // }, []);
+    useEffect(handleRestaurantSearch, []);
+    useEffect(handleRestaurantSearch, [props.centerLoc]);
 
+    while (!finish) return (<div>Loading...</div>)
     return (
         <div className="ResultListing">
             <div
                 id="scrollableDiv"
                 style={{
-                    height: 800,
+                    width: '100%',
                     overflow: 'auto',
                     padding: '0 16px',
                     border: '1px solid rgba(140, 140, 140, 0.35)',
                 }}
             >
-                <InfiniteScroll
-                    dataLength={data.length}
-                    next={loadMoreData}
-                    hasMore={data.length < 50}
-                    loader={<Skeleton avatar paragraph={{rows: 1}} active/>}
-                    endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
-                    scrollableTarget="scrollableDiv"
-                >
                     <List
                         dataSource={data}
                         renderItem={item => (
-                            <List.Item key={item.id}>
+                            <List.Item key={item.place_id}>
                                 <List.Item.Meta
-                                    avatar={<Avatar src={item.picture.large}/>}
-                                    title={<a href="https://ant.design">{item.name.last}</a>}
-                                    description={item.email}
+                                    avatar={<Avatar src={item.icon}/>}
+                                    title={<a href="https://ant.design">{item.name}</a>}
+                                    description={
+                                        <div>
+                                            <p>Rating: {item.rating}</p>
+                                            <p>Price Level: {item.price_level}</p>
+                                        </div>}
                                 />
-                                <div>Content</div>
+                                <Button type="primary" size={'small'}>
+                                    Save
+                                </Button>
                             </List.Item>
                         )}
                     />
-                </InfiniteScroll>
             </div>
 
         </div>
