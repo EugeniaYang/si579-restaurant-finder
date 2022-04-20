@@ -1,5 +1,8 @@
 .table tbody tr td {
     font-weight: bold;
-    color: #0F9D58;
 }
 
+.restaurantname {
+    font-weight: bold;
+    color: #4285F4;
+}
