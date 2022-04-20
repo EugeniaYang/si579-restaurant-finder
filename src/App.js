@@ -1,18 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
-import {Row, Col} from 'antd';
-import ResultListing from "./components/ResultListing";
-import React, {useEffect, useState} from "react";
+import { Row, Col } from 'antd';
+import ResultListing from "./components/ResultListing2";
+import React, { useEffect, useState } from "react";
 import SimpleMap from "./components/Map";
-
 import Complete from "./components/Complete";
+import Table from 'react-bootstrap/Table'
+
+
 
 const API_KEY = 'AIzaSyCPuTBdJFz2V9k_7QtyU6niWQg-irn84jk';
 const findPos = (id) => {
     const proxyUrl = "https://cors-anywhere.herokuapp.com/";
     return fetch(proxyUrl + 'https://maps.googleapis.com/maps/api/place/details/json?' +
         'place_id=' + id + '&fields=geometry' +
-        '&key=' + API_KEY, {mode: 'cors', headers: {'Access-Control-Allow-Origin': "*"}})
+        '&key=' + API_KEY, { mode: 'cors', headers: { 'Access-Control-Allow-Origin': "*" } })
         .then(response => response.json())
         .then((data) => {
             return data.result.geometry.location;
@@ -25,7 +27,8 @@ const findPos = (id) => {
 function App() {
     const [centerPos, setCenterPos] = useState({
         value: 'North Quadrangle Residential and Academic Complex, South State Street, Ann Arbor, MI, USA',
-        key: "ChIJy_fxa0CuPIgRWmk6N0CQ0u8"
+        // place_id
+        key: "ChIJy_fxa0CuPIgRWmk6N0CQ0u8" 
     });
     const [centerLoc, setCenterLoc] = useState();
     const [savedList, setSavedList] = useState([]);
@@ -44,32 +47,34 @@ function App() {
     return (
         <div className="App">
             <Row>
-                <Col xs={2} sm={3} md={3} lg={4} xl={5}/>
+                <Col xs={2} sm={3} md={3} lg={4} xl={5} />
 
                 <Col xs={20} sm={18} md={18} lg={16} xl={14}>
                     <h1>Find the restaurant for you!</h1>
-                    <Complete setCenterPos={setCenterPos}/>
+                    <Complete setCenterPos={setCenterPos} />
                     <div style={{
                         width: '100%',
                     }}>
                         <h3>Current Center:{centerPos.value}</h3>
+                        <SimpleMap centerLoc={centerLoc} />
+                        
+
                     </div>
-                    <SimpleMap centerLoc={centerLoc}/>
                     <br/>
-                    <div/>
-                    <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
-                        <Col className="gutter-row" span={24}>
-                            <ResultListing centerLoc={centerLoc}/>
-                        </Col>
-                    </Row>
-                    Reference:
-                    <ul>
-                        <li><a href={'https://react-google-maps-api-docs.netlify.app/'}>React Google Maps Api Style Guide</a>
-                        </li>
-                    </ul>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <ResultListing  centerLoc={centerLoc} />
+                    <br/>
+                    <h3>
+                        Reference: <a href={'https://react-google-maps-api-docs.netlify.app/'}>React Google Maps Api Style Guide</a>
+                    </h3>
 
                 </Col>
-                <Col xs={2} sm={3} md={3} lg={4} xl={5}/>
+
 
 
             </Row>

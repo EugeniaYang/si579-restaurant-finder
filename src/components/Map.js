@@ -16,7 +16,11 @@ const SimpleMap = (props) => {
         console.log('show')
         // const centerLoc= centerPos;
         console.log(props.centerLoc)
+
         let result=<Marker position={props.centerLoc}/>;
+        
+
+
         if (markers.len>0){
 
         }
