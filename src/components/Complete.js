@@ -19,7 +19,6 @@ function mockVal(str) {
 const Complete = (props) => {
         const [value, setValue] = useState('');
         const [options, setOptions] = useState([]);
-        const [selected, setSelected] = useState([])
 
         async function onSearch(searchText) {
             const r = await mockVal(searchText);
