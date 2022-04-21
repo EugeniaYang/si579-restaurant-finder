@@ -37,17 +37,28 @@ function App() {
   const [centerLoc, setCenterLoc] = useState();
   const [marker, setMarker] = useState([]);
 
-  useEffect(async () => {
-    let loc = await findPos(centerPos.key);
-    console.log(loc);
-    setCenterLoc(loc);
+  useEffect(() => {
+    async function fetchData() {
+      let loc = await findPos(centerPos.key);
+      console.log(loc);
+      setCenterLoc(loc);
+    }
   }, [centerPos]);
 
-  useEffect(async () => {
-    let loc = await findPos(centerPos.key);
-    console.log(loc);
-    setCenterLoc(loc);
+  // useEffect(async () => {
+  //   let loc = await findPos(centerPos.key);
+  //   console.log(loc);
+  //   setCenterLoc(loc);
+  // }, [centerPos]);
+
+  useEffect( () => {
+    async function initData() {
+      let loc = await findPos(centerPos.key);
+      console.log(loc);
+      setCenterLoc(loc);
+    }
   }, []);
+
   return (
     <div className="App">
       <Row>
