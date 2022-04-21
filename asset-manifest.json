@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/si579-restaurant-finder/static/css/main.22462368.css",
-    "main.js": "/si579-restaurant-finder/static/js/main.2082f0a5.js",
+    "main.js": "/si579-restaurant-finder/static/js/main.99fd1bd3.js",
     "static/js/787.4451b3a7.chunk.js": "/si579-restaurant-finder/static/js/787.4451b3a7.chunk.js",
     "index.html": "/si579-restaurant-finder/index.html",
     "main.22462368.css.map": "/si579-restaurant-finder/static/css/main.22462368.css.map",
-    "main.2082f0a5.js.map": "/si579-restaurant-finder/static/js/main.2082f0a5.js.map",
+    "main.99fd1bd3.js.map": "/si579-restaurant-finder/static/js/main.99fd1bd3.js.map",
     "787.4451b3a7.chunk.js.map": "/si579-restaurant-finder/static/js/787.4451b3a7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.22462368.css",
-    "static/js/main.2082f0a5.js"
+    "static/js/main.99fd1bd3.js"
   ]
 }
