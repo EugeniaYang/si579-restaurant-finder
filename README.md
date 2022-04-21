@@ -1,75 +1,31 @@
 # Getting Started with our Restaurant Finder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is our group final project for SI579 Building Interactive Applications at UMSI. Based on our interest in
+eating in good restaurants, and the need to find good restaurants when we travel, we designed and developed this
+application to make things easier for those who are planning for a travel or just a great dinner.
 
-## About UI Library: ant-design
+## Features
 
-- `yarn add antd` to install ant-design if you are running on localhost
+- Auto Complete an address as you type keywords in the box
+- Show the address that you are looking for at the center of the map
+- Show a list of recommended restaurants with their name, price level and rating
+- Click the button, and you can see the restaurants in the map!
+- Click on the marker to cancel.
+
+## Libraries/Tools/Techniques
+
+### React
+
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Google Maps API
+
+### About UI Library: ant-design
+
+- We are using ant-design in
 - Open https://ant.design/components/overview-cn/ to view use in Chinese
 
-## Available Scripts
+## Links(Accessible with UofM)
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Our project
+  deliverable [document](https://docs.google.com/document/d/1rK8yziqREa2ciaSpf4vV2m1rDDvYzRiIMzj4K-xugSs/edit?usp=sharing)
