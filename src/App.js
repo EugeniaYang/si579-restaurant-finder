@@ -57,8 +57,6 @@ function App() {
                     }}>
                         <h3>Current Center:{centerPos.value}</h3>
                         <SimpleMap centerLoc={centerLoc} />
-                        
-
                     </div>
                     <br/>
                     <br/>
